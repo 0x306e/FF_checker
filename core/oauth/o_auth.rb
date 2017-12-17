@@ -1,7 +1,7 @@
 require 'twitter'
 require 'twitter_oauth'
 
-module OAuth
+module FF_checker
   client = TwitterOAuth::Client.new(
     :consumer_key => '',
     :consumer_secret => ''
