@@ -1,4 +1,5 @@
 require 'yaml'
+
 module FF_checker
   class Configger
     def initialize(uid)
