@@ -1,16 +1,30 @@
 require 'twitter'
-require 'twitter_oauth'
+require 'oauth'
+require 'oauth/consumer'
 require 'yaml'
 
 module FF_checker
   class O_auth
-    key = YAML.load_file('./settings.yml')
+    def initialize(key, secret)
+      @consumer = OAuth::Consumer.new(
+          :key,
+          :secret,
+          {
+              :site => 'https://api.twitter.com'
+          }
+      )
+    end
 
-    client = TwitterOAuth::Client.new(
-        :consumer_key => key['consumer_key'],
-        :consumer_secret => key['consumer_secret']
-    )
+    def get_url
+      @token = @consumer.get_request_token
+      @url = @token.authorize_url
+      return @url
+    end
 
-    request_token = client.request_token
+    def get_token(pin_code)
+      @token.get_access_token(:oauth_verifier => pin_code)
+      return @token.token, @token.secret
+    end
+
   end
 end
