@@ -7,11 +7,9 @@ module FF_checker
   class O_auth
     def initialize(key, secret)
       @consumer = OAuth::Consumer.new(
-          :key,
-          :secret,
-          {
-              :site => 'https://api.twitter.com'
-          }
+          key,
+          secret,
+          site: 'https://api.twitter.com'
       )
     end
 
