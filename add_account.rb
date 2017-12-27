@@ -7,9 +7,9 @@ auth = O_auth.new(setting['consumer_key'], setting['consumer_secret'])
 
 url = auth.get_url
 system("start #{url}")
-print('Enter pin code :')
+print('Enter pin code : ')
 pin = gets
-token, secret = auth.get_token(pin.to_i)
+token, secret = auth.get_token(pin)
 
 client = Twitter::REST::Client.new do |conf|
   conf.consumer_key = setting['consumer_key']
