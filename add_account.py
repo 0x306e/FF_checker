@@ -1,28 +1,29 @@
 # -- coding: utf-8 --
-import yaml
+import tweepy
+import json
 import webbrowser
-from core.oauth import OAuth
 
 if __name__ == '__main__':
-    setting = yaml.safe_load(open('./settings.yml'))
-    auth = OAuth(setting['consumer_key'], setting['consumer_secret'])
-    url = auth.get_url()
-    webbrowser.open(url)
+    setting = json.loads(open('./settings.json', 'r').read())
+    auth = tweepy.OAuthHandler(setting['consumer_key'], setting['consumer_secret'])
+    url = auth.get_authorization_url()
+    webbrowser.open_new(url)
     print(f'if don`t open Twitter authorization, please access {url} and accept.')
     print('Enter pin code : ', end='')
     pin = input()
-    access_token, access_token_secret = auth.get_token(pin)
-    uid = auth.get_uid()
+    auth.get_access_token(pin)
+    api = tweepy.API(auth)
+    uid = api.me().id
 
     config = {
         'user_id': int(uid),
         'consumer_key': setting['consumer_key'],
         'consumer_secret': setting['consumer_secret'],
-        'access_token': access_token,
-        'access_token_secret': access_token_secret
+        'access_token': auth.access_token,
+        'access_token_secret': auth.access_token_secret
     }
-    f = open(f'./data/{uid}.yml', 'wt')
-    yaml.dump(config, f, default_flow_style=False, encoding='utf-8')
+    f = open(f'./data/{uid}.json', 'w')
+    json.dump(config, f, indent=True)
     f.close()
 
     print('Account successfully added!')
