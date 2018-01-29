@@ -12,14 +12,20 @@ class Client:
         self.auth.set_access_token(conf.access_token, conf.access_token_secret)
         self.api = tweepy.API(self.auth)
 
+    def __init__(self, tweepy_api):
+        self.api = tweepy_api
+
     def get_following(self):
-        pass
+        id_sn = {}
+        for user in tweepy.Cursor(self.api.friends, cursor=-1).items():
+            id_sn[user.id] = user.screen_name
+        return id_sn
 
     def get_follower(self):
         id_sn = {}
         for user in tweepy.Cursor(self.api.followers, cursor=-1).items():
             id_sn[user.id] = user.screen_name
-        return list
+        return id_sn
 
-    def send_direct_message(self):
-        pass
+    def send_direct_message(self, uid, message):
+        self.api.send_direct_message(user_id=uid, text=message)
