@@ -16,12 +16,19 @@ if __name__ == '__main__':
     uid = api.me().id
 
     config = {
-        'user_id': int(uid),
-        'consumer_key': setting['consumer_key'],
-        'consumer_secret': setting['consumer_secret'],
-        'access_token': auth.access_token,
-        'access_token_secret': auth.access_token_secret
+        'user': {
+            'user_id': int(uid),
+            'consumer_key': setting['consumer_key'],
+            'consumer_secret': setting['consumer_secret'],
+            'access_token': auth.access_token,
+            'access_token_secret': auth.access_token_secret
+        },
+        'following': {
+        },
+        'follower': {
+        }
     }
+
     f = open(f'./data/{uid}.json', 'w')
     json.dump(config, f, indent=True)
     f.close()
