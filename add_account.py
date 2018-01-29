@@ -17,7 +17,7 @@ if __name__ == '__main__':
 
     config = {
         'user': {
-            'user_id': int(uid),
+            'id': int(uid),
             'consumer_key': setting['consumer_key'],
             'consumer_secret': setting['consumer_secret'],
             'access_token': auth.access_token,

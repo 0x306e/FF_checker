@@ -1,6 +1,6 @@
 {
  "user": {
-  "user_id": 0123456789,
+  "id": 123456789,
   "consumer_key": "CONSUMER_KEY",
   "consumer_secret": "CONSUMER_SECRET",
   "access_token": "ACCESS_TOKEN",
