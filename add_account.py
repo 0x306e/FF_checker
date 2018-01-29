@@ -2,6 +2,7 @@
 import tweepy
 import json
 import webbrowser
+from core.client import Client
 
 if __name__ == '__main__':
     setting = json.loads(open('./settings.json', 'r').read())
@@ -14,6 +15,7 @@ if __name__ == '__main__':
     auth.get_access_token(pin)
     api = tweepy.API(auth)
     uid = api.me().id
+    client = Client(api)
 
     config = {
         'user': {
@@ -23,10 +25,8 @@ if __name__ == '__main__':
             'access_token': auth.access_token,
             'access_token_secret': auth.access_token_secret
         },
-        'following': {
-        },
-        'follower': {
-        }
+        'following': client.get_following(),
+        'follower': client.get_follower()
     }
 
     f = open(f'./data/{uid}.json', 'w')
