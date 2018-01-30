@@ -1,11 +1,16 @@
 {
  "user": {
   "id": 123456789,
+  "screen_name": "SCREEN_NAME",
   "consumer_key": "CONSUMER_KEY",
   "consumer_secret": "CONSUMER_SECRET",
   "access_token": "ACCESS_TOKEN",
   "access_token_secret": "ACCESS_TOKEN_SECRET"
  },
- "following": {},
- "follower": {}
+ "following": {
+  "987654321": "SCREEN_NAME"
+ },
+ "follower": {
+  "987654321": "SCREEN_NAME"
+ }
 }
