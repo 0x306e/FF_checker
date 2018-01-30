@@ -12,9 +12,6 @@ class Client:
         self.auth.set_access_token(conf.access_token, conf.access_token_secret)
         self.api = tweepy.API(self.auth)
 
-    def __init__(self, tweepy_api):
-        self.api = tweepy_api
-
     def get_following(self):
         id_sn = {}
         for user in tweepy.Cursor(self.api.friends, cursor=-1).items():
