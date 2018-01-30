@@ -25,6 +25,7 @@ if __name__ == '__main__':
     config = {
         'user': {
             'id': int(uid),
+            'screen_name': client.api.me().screen_name,
             'consumer_key': setting['consumer_key'],
             'consumer_secret': setting['consumer_secret'],
             'access_token': auth.access_token,
