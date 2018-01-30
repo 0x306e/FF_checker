@@ -3,10 +3,11 @@ import tweepy
 import json
 import webbrowser
 from core.client import Client
+from core.setting import Setting
 
 if __name__ == '__main__':
-    setting = json.loads(open('./settings.json', 'r').read())
-    auth = tweepy.OAuthHandler(setting['consumer_key'], setting['consumer_secret'])
+    setting = Setting()
+    auth = tweepy.OAuthHandler(setting['key']['consumer_key'], setting['key']['consumer_secret'])
     url = auth.get_authorization_url()
     webbrowser.open_new(url)
     print(f'if don`t open Twitter authorization, please access {url} and accept.')
