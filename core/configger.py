@@ -10,3 +10,5 @@ class Configger:
         self.consumer_secret = self.conf['user']['consumer_secret']
         self.access_token = self.conf['user']['access_token']
         self.access_token_secret = self.conf['user']['access_token_secret']
+        self.following = self.conf['following']
+        self.follower = self.conf['follower']
