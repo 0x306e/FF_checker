@@ -5,12 +5,16 @@ class Client:
     def __init__(self, consumer_key, consumer_secret, access_token, access_token_secret):
         self.auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
         self.auth.set_access_token(access_token, access_token_secret)
-        self.api = tweepy.API(self.auth)
+        self.api = tweepy.API(self.auth, wait_on_rate_limit=True)
 
-    def __init__(self, conf):
-        self.auth = tweepy.OAuthHandler(conf.consumer_key, conf.consumer_secret)
-        self.auth.set_access_token(conf.access_token, conf.access_token_secret)
-        self.api = tweepy.API(self.auth)
+    @classmethod
+    def create_from_conf(cls, conf):
+        return Client(
+            consumer_key=conf.consumer_key,
+            consumer_secret=conf.consumer_secret,
+            access_token=conf.access_token,
+            access_token_secret=conf.access_token_secret
+        )
 
     def get_following(self):
         id_sn = {}

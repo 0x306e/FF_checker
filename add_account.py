@@ -14,9 +14,13 @@ if __name__ == '__main__':
     print('Enter pin code : ', end='')
     pin = input()
     auth.get_access_token(pin)
-    api = tweepy.API(auth)
-    uid = api.me().id
-    client = Client(api)
+    client = Client(
+        consumer_key=setting['consumer_key'],
+        consumer_secret=setting['consumer_secret'],
+        access_token=auth.access_token,
+        access_token_secret=auth.access_token_secret
+    )
+    uid = client.api.me().id
 
     config = {
         'user': {
