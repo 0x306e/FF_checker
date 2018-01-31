@@ -29,7 +29,7 @@ class Checker:
         self.diff['removed'] = previous_dict
         return self.diff
 
-    def create_massage_follower(self):
+    def create_message_follower(self):
         messages = []
         for i, j in self.diff.items():
             if i == 'added':
@@ -44,7 +44,7 @@ class Checker:
         message = '\n'.join(messages)
         return message
 
-    def create_massage_following(self):
+    def create_message_following(self):
         messages = []
         for i, j in self.diff.items():
             if i == 'added':
