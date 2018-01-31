@@ -13,3 +13,11 @@ class Configger:
         self.access_token_secret = self.__json['user']['access_token_secret']
         self.following = self.__json['following']
         self.follower = self.__json['follower']
+
+    def update(self, target, data):
+        self.__json[target] = data
+
+    def store(self):
+        fp = open(self.path, 'w')
+        json.dump(self.__json, fp, indent=True)
+        fp.close()
