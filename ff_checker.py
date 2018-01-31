@@ -6,8 +6,4 @@ if __name__ == '__main__':
     accounts = os.listdir('./data/')
     for account in accounts:
         if account != 'sample.json':
-            main = Main(account)
-            main.start(account)
-
-
-
+            Main(account).start()
