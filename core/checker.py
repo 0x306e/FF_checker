@@ -31,30 +31,32 @@ class Checker:
 
     def create_message_follower(self):
         messages = []
+        self.__get_diff()
         for i, j in self.diff.items():
             if i == 'added':
                 for k, l in j.items():
-                    messages.append(f"{l} has followed you.")
+                    messages.append(f"@{l} has followed you.")
             if i == 'removed':
                 for k, l in j.items():
-                    messages.append(f"{l} has removed you.")
+                    messages.append(f"@{l} has removed you.")
             if i == 'screen_name_changed':
                 for k, l in j.items():
-                    messages.append(f"{l['currently']} has changed name from {l['previous']}")
+                    messages.append(f"@{l['currently']} has changed name from @{l['previous']}")
         message = '\n'.join(messages)
         return message
 
     def create_message_following(self):
         messages = []
+        self.__get_diff()
         for i, j in self.diff.items():
             if i == 'added':
                 for k, l in j.items():
-                    messages.append(f"you have followed {l}.")
+                    messages.append(f"you have followed @{l}.")
             if i == 'removed':
                 for k, l in j.items():
-                    messages.append(f"you have removed {l}.")
+                    messages.append(f"you have removed @{l}.")
             if i == 'screen_name_changed':
                 for k, l in j.items():
-                    messages.append(f"{l['currently']} has changed name from {l['previous']}")
+                    messages.append(f"@{l['currently']} has changed name from @{l['previous']}")
         message = '\n'.join(messages)
         return message
