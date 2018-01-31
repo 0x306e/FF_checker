@@ -35,9 +35,9 @@ if __name__ == '__main__':
         'follower': client.get_follower()
     }
 
-    f = open(f'./data/{uid}.json', 'w')
-    json.dump(config, f, indent=True)
-    f.close()
+    fp = open(f'./data/{uid}.json', 'w')
+    json.dump(config, fp, indent=True)
+    fp.close()
 
     print('Account successfully added!')
     input('Press enter to close.')
