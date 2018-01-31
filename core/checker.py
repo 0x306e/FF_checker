@@ -8,7 +8,7 @@ class Checker:
         self.diff = {
             'added': {},
             'removed': {},
-            'sn_changed': {}
+            'screen_name_changed': {}
         }
 
     def __get_diff(self):
@@ -19,7 +19,7 @@ class Checker:
             str_j = str(j)
             if str_j in previous_dict:
                 if previous_dict[str_j] != k:
-                    self.diff['sn_changed'][str_j] = {
+                    self.diff['screen_name_changed'][str_j] = {
                         'previous': previous_dict[str_j],
                         'currently': k
                     }
@@ -38,7 +38,7 @@ class Checker:
             if i == 'removed':
                 for k, l in j.items():
                     messages.append(f"{l} has removed you.")
-            if i == 'sn_changed':
+            if i == 'screen_name_changed':
                 for k, l in j.items():
                     messages.append(f"{l['currently']} has changed name from {l['previous']}")
         message = '\n'.join(messages)
@@ -53,7 +53,7 @@ class Checker:
             if i == 'removed':
                 for k, l in j.items():
                     messages.append(f"you have removed {l}.")
-            if i == 'sn_changed':
+            if i == 'screen_name_changed':
                 for k, l in j.items():
                     messages.append(f"{l['currently']} has changed name from {l['previous']}")
         message = '\n'.join(messages)
