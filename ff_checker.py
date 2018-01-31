@@ -1,7 +1,13 @@
 import os
 
+from core.Main import Main
+
 if __name__ == '__main__':
     accounts = os.listdir('./data/')
     for account in accounts:
         if account != 'sample.json':
-            hoge.start(f'./data/{account}')
+            main = Main(account)
+            main.start(account)
+
+
+
