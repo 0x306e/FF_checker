@@ -7,10 +7,11 @@ from core.configger import Configger
 
 class Main(threading.Thread):
     def __init__(self, account=None):
+        super(Main, self).__init__()
         self.account = account
 
     def run(self):
-        conf = Configger(f'./data/{account}')
+        conf = Configger(f'./data/{self.account}')
         client = Client.create_from_conf(conf)
         following_currently = client.get_following()
         follower_currently = client.get_follower()
