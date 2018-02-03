@@ -33,15 +33,15 @@ class Checker:
         messages = []
         self.__get_diff()
         for i, j in self.__diff.items():
-            if i == 'added':
+            if i == 'added' and len(j) != 0:
                 for k, l in j.items():
                     messages.append(f"@{l} ")
                 messages.append('has followed you. ')
-            if i == 'removed':
+            if i == 'removed' and len(j) != 0:
                 for k, l in j.items():
                     messages.append(f"@{l} ")
                 messages.append('has removed you. ')
-            if i == 'screen_name_changed':
+            if i == 'screen_name_changed' and len(j) != 0:
                 for k, l in j.items():
                     messages.append(f"@{l['currently']} has changed name from @{l['previous']}. ")
         message = ' '.join(messages)
@@ -51,15 +51,15 @@ class Checker:
         messages = []
         self.__get_diff()
         for i, j in self.__diff.items():
-            if i == 'added':
+            if i == 'added' and len(j) != 0:
                 messages.append('you have followed ')
                 for k, l in j.items():
                     messages.append(f"@{l} ")
-            if i == 'removed':
+            if i == 'removed' and len(j) != 0:
                 messages.append('you have removed ')
                 for k, l in j.items():
                     messages.append(f"@{l} ")
-            if i == 'screen_name_changed':
+            if i == 'screen_name_changed' and len(j) != 0:
                 for k, l in j.items():
                     messages.append(f"@{l['currently']} has changed name from @{l['previous']}. ")
         message = ' '.join(messages)
