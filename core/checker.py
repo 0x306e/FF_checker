@@ -10,6 +10,7 @@ class Checker:
             'removed': {},
             'screen_name_changed': {}
         }
+        self.__get_diff()
 
     def __get_diff(self):
         previous_dict = copy.deepcopy(self.__previous)
@@ -31,7 +32,6 @@ class Checker:
 
     def create_message_follower(self):
         messages = []
-        self.__get_diff()
         for i, j in self.__diff.items():
             if i == 'added' and len(j) != 0:
                 for k, l in j.items():
@@ -49,7 +49,6 @@ class Checker:
 
     def create_message_following(self):
         messages = []
-        self.__get_diff()
         for i, j in self.__diff.items():
             if i == 'added' and len(j) != 0:
                 messages.append('you have followed ')
