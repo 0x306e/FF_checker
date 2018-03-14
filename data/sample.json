@@ -8,9 +8,12 @@
   "access_token_secret": "ACCESS_TOKEN_SECRET"
  },
  "following": {
-  "987654321": "SCREEN_NAME"
+  "987654321": "SCREEN_NAME",
+  "1919893810": "sekai_no_toono",
+  "364364": "ONDISK"
  },
  "follower": {
-  "987654321": "SCREEN_NAME"
+  "987654321": "SCREEN_NAME",
+  "1919893810": "ONDISK"
  }
 }
